@@ -1,4 +1,42 @@
+# == Route Map
+#
+#            Prefix Verb   URI Pattern                       Controller#Action
+#              root GET    /                                 pages#welcome
+#     organizations GET    /organizations(.:format)          organizations#index
+#                   POST   /organizations(.:format)          organizations#create
+#  new_organization GET    /organizations/new(.:format)      organizations#new
+# edit_organization GET    /organizations/:id/edit(.:format) organizations#edit
+#      organization GET    /organizations/:id(.:format)      organizations#show
+#                   PATCH  /organizations/:id(.:format)      organizations#update
+#                   PUT    /organizations/:id(.:format)      organizations#update
+#                   DELETE /organizations/:id(.:format)      organizations#destroy
+#            people GET    /people(.:format)                 people#index
+#                   POST   /people(.:format)                 people#create
+#        new_person GET    /people/new(.:format)             people#new
+#       edit_person GET    /people/:id/edit(.:format)        people#edit
+#            person GET    /people/:id(.:format)             people#show
+#                   PATCH  /people/:id(.:format)             people#update
+#                   PUT    /people/:id(.:format)             people#update
+#                   DELETE /people/:id(.:format)             people#destroy
+#             posts GET    /posts(.:format)                  posts#index
+#                   POST   /posts(.:format)                  posts#create
+#          new_post GET    /posts/new(.:format)              posts#new
+#         edit_post GET    /posts/:id/edit(.:format)         posts#edit
+#              post GET    /posts/:id(.:format)              posts#show
+#                   PATCH  /posts/:id(.:format)              posts#update
+#                   PUT    /posts/:id(.:format)              posts#update
+#                   DELETE /posts/:id(.:format)              posts#destroy
+#
+
 Rails.application.routes.draw do
+  root :to => "pages#welcome"
+  get "/organizations/list/:page" => "organizations#list" 
+  resources :organizations
+  resources :people
+  resources :posts
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
