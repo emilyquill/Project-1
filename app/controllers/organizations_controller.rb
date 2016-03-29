@@ -19,9 +19,9 @@ class OrganizationsController < ApplicationController
 
   def headteacher
     @organization =  Organization.find params[:id]
-    render :json => {
-      :name => @organization.get_edubase_ht(@organization.institution_detail.uk_urn)
-    }
+      render :json => {
+        :name => @organization.get_edubase_ht(@organization.institution_detail.uk_urn)
+      }
   end
 
 end
