@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class OrganizationsController < ApplicationController
   def index
     @organizations = Organization.includes(:posts, :people).limit(40)
@@ -13,9 +15,13 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization =  Organization.includes(:posts, :institution_detail).find params[:id]
-    require 'open-uri'
-    doc = Nokogiri::HTML(open("http://www.education.gov.uk/edubase/establishment/summary.xhtml?urn=#{@organization.institution_detail.uk_urn}"))
-    @edu_ht = nil
-    @edu_ht = doc.at_css(".first td:first-of-type").text unless doc.at_css(".first td:first-of-type") == nil
   end
+
+  def headteacher
+    @organization =  Organization.find params[:id]
+    render :json => {
+      :name => @organization.get_edubase_ht(@organization.institution_detail.uk_urn)
+    }
+  end
+
 end

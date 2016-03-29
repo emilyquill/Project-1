@@ -30,7 +30,8 @@
 
 Rails.application.routes.draw do
   root :to => "pages#welcome"
-  get "/organizations/list/:page" => "organizations#list" 
+  get "/organizations/list/:page" => "organizations#list"
+  get "/organizations/:id/headteacher" => "organizations#headteacher" 
   resources :organizations
   resources :people
   resources :posts

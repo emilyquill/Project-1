@@ -25,10 +25,6 @@
 </p>
 
 <h3>Edubase HT</h3>
-<p>
-  <% if @edu_ht != nil %>
-    <%= @edu_ht %>
-  <% else %>
-  <%= "Not found" %>
-  <% end %>
-</p>
+<div><input type="hidden" class="organization-id" value="<%= @organization.id %>">
+<img src="http://www.turismoinliguria.it/images/loader.gif" alt="">
+</div>
