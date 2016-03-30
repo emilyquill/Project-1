@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id   :integer          not null, primary key
+#  name :text
+#
+
 require 'open-uri'
 
 class Organization < ActiveRecord::Base

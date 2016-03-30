@@ -1,30 +1,40 @@
+<div class="show-container panel panel-default">
+<h2> <%= @organization.name  %></h2>
 
-<h1> <%= @organization.name  %></h1>
+<div class="panel panel-info">
+  <div class="panel-heading"><h3 class= "panel-title">Details</h3> </div>
+    <div class="panel-body">
+      <ul>
+        <% if @organization.institution_detail.uk_urn > 0 %>
+          <li> URN: <%= @organization.institution_detail.uk_urn %></li>
+        <% end %>
+        <% if @organization.institution_detail.institution_type.present? %>
+          <li> Type: <%= @organization.institution_detail.institution_type %></li>
+        <% end %>
+        <li> Age range: <%= @organization.institution_detail.min_age %> - <%= @organization.institution_detail.max_age %> </li>
+        <li> Status: <%= @organization.institution_detail.establishment_status %> </li>
+      </ul>
+    </div>
+  </div>
 
-<p>
-  <h2>Details</h2>
-  <ul>
-    <% if @organization.institution_detail.uk_urn > 0 %>
-      <li> URN: <%= @organization.institution_detail.uk_urn %></li>
+<div class="panel panel-info">
+  <div class="panel-heading"><h3 class= "panel-title">Staff</h3> </div>
+  <div class="panel-body">
+    <% @organization.posts.each do |p| %>
+      <% if p.end_date == nil %>
+        <p><%= p.person.title %> <%= p.person.first_name %> <%= p.person.last_name %> <span class="label label-primary"> <%= p.job_title %></span></p>
+      <% end %>
     <% end %>
-    <% if @organization.institution_detail.institution_type.present? %>
-      <li> Type: <%= @organization.institution_detail.institution_type %></li>
-    <% end %>
-    <li> Age range: <%= @organization.institution_detail.min_age %> - <%= @organization.institution_detail.max_age %> </li>
-    <li> Status: <%= @organization.institution_detail.establishment_status %> </li>
-  </ul>
-</p>
+  </div>
+</div>
 
-<p>
-  <h2> Staff </h2>
-  <% @organization.posts.each do |p| %>
-    <% if p.end_date == nil %>
-      <p><%= p.person.title %> <%= p.person.first_name %> <%= p.person.last_name %> ( <%= p.job_title %> )</p>
-    <% end %>
-  <% end %>
-</p>
-
-<h3>Edubase HT</h3>
-<div><input type="hidden" class="organization-id" value="<%= @organization.id %>">
-<img src="http://www.turismoinliguria.it/images/loader.gif" alt="">
+<div class="panel panel-info">
+  <div class="panel-heading"><h3 class= "panel-title">Edubase Headteacher</h3></div>
+    <div class="panel-body">
+      <div>
+        <input type="hidden" class="organization-id" value="<%= @organization.id %>">
+        <img id="loading" src="http://www.turismoinliguria.it/images/loader.gif" alt="">
+      </div>
+    </div>
+  </div>
 </div>

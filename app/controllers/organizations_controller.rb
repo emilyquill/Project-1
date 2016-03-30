@@ -1,8 +1,9 @@
 require 'open-uri'
 
 class OrganizationsController < ApplicationController
+
   def index
-    @organizations = Organization.includes(:posts, :people).limit(40)
+    redirect_to "/organizations/list/1"
   end
 
   def list
@@ -23,5 +24,6 @@ class OrganizationsController < ApplicationController
         :name => @organization.get_edubase_ht(@organization.institution_detail.uk_urn)
       }
   end
+
 
 end

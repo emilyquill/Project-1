@@ -2,6 +2,46 @@ h6 {
   text-align: center;
 }
 
+h2 {
+  color: #31708F;
+  text-align: center;
+  margin-bottom: 30px;
+}
 #loading {
   width: 20px;
+}
+
+.login {
+  width: 420px;
+  margin: 0 auto;
+}
+
+.login h1 {
+  text-align: left;
+}
+
+.alerts-container {
+  width: 420px;
+  margin: 0 auto;
+}
+
+.show-container {
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.school-container {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+p.navbar-text.navbar-right {
+  margin-right: 10px;
+}
+
+nav.pages {
+  display: flex;
+  justify-content: center;
 }
