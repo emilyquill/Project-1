@@ -2,6 +2,8 @@ class InstitutionDetailsController < ApplicationController
 
   def edit
     @institution_detail = InstitutionDetail.find_by(organization_id: params[:id])
+    @back = flash[:previous_url]
+
   end
 
   def update

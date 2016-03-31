@@ -1,46 +1,48 @@
 <div class="new">
-<div class="panel panel-info">
-  <div class="panel-heading">Add Staff Member at <%= @organization.name %></div>
-  <div class="panel-body">
+  <div class="panel panel-info">
+    <div class="panel-heading">Add Staff Member at
+      <%= link_to(@organization.name, organization_path(@organization.id))%>
+    </div>
+    <div class="panel-body-center">
 
-<%= form_tag({controller: "people", action: "create"}, method: "post") do %>
-<%= hidden_field_tag(:organization_id, @organization.id) %>
-<div class="form-group">
-<%= label_tag 'Title' %>
-<%= text_field_tag(:title) %>
-</div>
-<div class="form-group">
-  <%= label_tag 'First Name' %>
-<%= text_field_tag(:first_name) %>
-</div>
-<div class="form-group">
-  <%= label_tag 'Last Name' %>
-<%= text_field_tag(:last_name) %>
-</div>
-<div class="form-group">
-  <%= label_tag 'Gender' %>
-<%= text_field_tag(:gender) %>
-</div>
-<div class="form-group">
-  <%= label_tag 'Role' %>
-<%= select_tag(:organization_role_code, options_for_select([['Administrator', 'ADMINISTRATOR'], ['Headteacher', 'HEADTEACER'],['Bursar','BURSAR']])) %>
-</div>
-<div class="form-group">
-  <%= label_tag 'Job Title' %>
-<%= text_field_tag(:job_title) %>
-</div>
-<div class="form-group">
-  <%= label_tag 'Start Date' %>
-<%= date_field_tag(:start_date) %>
-</div>
-<div class="form-group">
-  <%= label_tag 'End Date' %>
-<%= date_field_tag(:end_date) %>
-</div>
-<div class="form-group">
-  <%= submit_tag %>
-</div>
-</div>
-</div>
+      <%= form_tag({controller: "people", action: "create"}, method: "post") do %>
+      <%= hidden_field_tag(:organization_id, @organization.id) %>
+      <div class="form-group">
+        <%= label_tag 'Title' %>
+        <%= text_field_tag(:title, nil, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'First Name' %>
+        <%= text_field_tag(:first_name, nil, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Last Name' %>
+        <%= text_field_tag(:last_name, nil, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Gender' %>
+        <%= text_field_tag(:gender, nil, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Role' %>
+        <%= select_tag(:organization_role_code, options_for_select([['Administrator', 'ADMINISTRATOR'], ['Headteacher', 'HEADTEACER'],['Bursar','BURSAR']])) %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Job Title' %>
+        <%= text_field_tag(:job_title, nil, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Start Date' %>
+        <%= date_field_tag(:start_date, nil, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'End Date' %>
+        <%= date_field_tag(:end_date, nil, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Add Staff Member", class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
 </div>
 <% end %>

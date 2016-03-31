@@ -1,7 +1,8 @@
 <div class="show-container panel panel-default">
-<h2> <%= @organization.name   %></h2>
+<h2> <%= @organization.name   %></h2>    <%= link_to "Back", @back %>
 <div class="panel panel-info">
   <div class="panel-heading"><h3 class= "panel-title">Details</h3><%= link_to " ", edit_institution_detail_path(@organization.id), :class => "icon-link fa fa-pencil" %>
+
  </div>
     <div class="panel-body">
       <ul>

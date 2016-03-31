@@ -21,6 +21,8 @@ class PeopleController < ApplicationController
     post.person_id = person.id
     post.save
     redirect_to organization_path(params[:organization_id])
+    @back = flash[:previous_url]
+
   end
 
 end

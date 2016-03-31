@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get "/organizations/:id/headteacher" => "organizations#headteacher"
   get "/home" => "pages#home"
   resources :organizations, except: [:create, :new, :delete] do
-    get 'new' => 'people#new'
+    get 'new' => 'people#new' # Nested resource
   end
   resources :people, except: [:show, :index]
   resources :posts, except: [:index, :create, :show, :new, :edit, :update, :delete]

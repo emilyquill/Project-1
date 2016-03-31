@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('.pagination a').on('click', function () {
+  $('a').on('click', function () {
     for (var i = 0; i < requests.length; i++) {
       console.log('aborting', requests[i]);
       requests[i].abort();

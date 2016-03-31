@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :fetch_user
   before_action :authorise, :except => [:new, :create]
+  after_action "save_previous_url"
+
+ def save_previous_url
+   # session[:previous_url] is a Rails built-in variable to save last url.
+   flash[:previous_url] = URI(request.referer || home_path).path
+ end
+
 
   private
   def fetch_user

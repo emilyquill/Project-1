@@ -11,11 +11,11 @@ class OrganizationsController < ApplicationController
     @page = params[:page].to_i
     offset = (@page-1)*result_length
     @organizations = Organization.includes(:posts, :people, :institution_detail).limit(10).offset(offset)
-
   end
 
   def show
     @organization =  Organization.includes(:posts, :institution_detail).find params[:id]
+    @back = flash[:previous_url]
   end
 
   def edit
