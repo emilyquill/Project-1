@@ -31,10 +31,14 @@ Rails.application.routes.draw do
   get "/organizations/list/:page" => "organizations#list"
   get "/organizations/:id/headteacher" => "organizations#headteacher"
   get "/home" => "pages#home"
-  resources :organizations, except: [:create, :new, :edit, :update, :delete]
+  resources :organizations, except: [:create, :new, :delete] do
+    get 'new' => 'people#new'
+  end
   resources :people, except: [:show, :index]
   resources :posts, except: [:index, :create, :show, :new, :edit, :update, :delete]
   resources :users, :only => [:index, :show, :update, :destroy]
+  resources :institution_details, :only => [:edit, :update]
+
 
 
 

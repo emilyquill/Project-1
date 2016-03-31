@@ -11,11 +11,21 @@ class OrganizationsController < ApplicationController
     @page = params[:page].to_i
     offset = (@page-1)*result_length
     @organizations = Organization.includes(:posts, :people, :institution_detail).limit(10).offset(offset)
-  end
 
+  end
 
   def show
     @organization =  Organization.includes(:posts, :institution_detail).find params[:id]
+  end
+
+  def edit
+    @organization = Organization.find params[:id]
+  end
+
+  def update
+    organization = Organization.find params[:id]
+    organization.update organization_params
+    redirect_to organization
   end
 
   def headteacher

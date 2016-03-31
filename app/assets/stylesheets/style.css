@@ -45,3 +45,37 @@ nav.pages {
   display: flex;
   justify-content: center;
 }
+
+.job-title {
+  padding-left: 5px;
+  font-size: 85%;
+  color: lightslategrey;
+}
+
+.icon-link {
+  padding-left: 5px;
+}
+
+h3.panel-title {
+  display: inline-block;
+}
+
+.edit {
+  width: 500px;
+  margin: 0 auto;
+}
+
+label.col-sm-6.control-label {
+  padding-left: 0px;
+}
+
+.new {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  min-width: 90px;
+}

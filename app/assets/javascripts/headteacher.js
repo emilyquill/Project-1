@@ -18,7 +18,7 @@ $(document).ready(function() {
       },
       dataType: 'json',
       error: function() {
-         $('#headteacher').html('<p>Not Found</p>');
+         $this.parent().html('<p>Not Found</p>');
       },
       success: function(data) {
         if (data.name === null) {

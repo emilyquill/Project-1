@@ -1,15 +1,15 @@
 <div class="show-container panel panel-default">
-<h2> <%= @organization.name  %></h2>
-
+<h2> <%= @organization.name   %></h2>
 <div class="panel panel-info">
-  <div class="panel-heading"><h3 class= "panel-title">Details</h3> </div>
+  <div class="panel-heading"><h3 class= "panel-title">Details</h3><%= link_to " ", edit_institution_detail_path(@organization.id), :class => "icon-link fa fa-pencil" %>
+ </div>
     <div class="panel-body">
       <ul>
         <% if @organization.institution_detail.uk_urn > 0 %>
           <li> URN: <%= @organization.institution_detail.uk_urn %></li>
         <% end %>
         <% if @organization.institution_detail.institution_type.present? %>
-          <li> Type: <%= @organization.institution_detail.institution_type %></li>
+          <li class="type"> Type: <%= @organization.institution_detail.institution_type %></li>
         <% end %>
         <li> Age range: <%= @organization.institution_detail.min_age %> - <%= @organization.institution_detail.max_age %> </li>
         <li> Status: <%= @organization.institution_detail.establishment_status %> </li>
@@ -18,11 +18,17 @@
   </div>
 
 <div class="panel panel-info">
-  <div class="panel-heading"><h3 class= "panel-title">Staff</h3> </div>
+  <div class="panel-heading"><h3 class= "panel-title">Staff</h3><%= link_to " ", organization_new_path(@organization.id), :class => "icon-link fa fa-plus-circle" %> </div>
   <div class="panel-body">
     <% @organization.posts.each do |p| %>
       <% if p.end_date == nil %>
-        <p><%= p.person.title %> <%= p.person.first_name %> <%= p.person.last_name %> <span class="label label-primary"> <%= p.job_title %></span></p>
+        <p><%= p.person.title %> <%= p.person.first_name %> <%= p.person.last_name %>
+          <% if p.job_title.present? %>
+            <span class="label label-primary">
+                <%= p.job_title %>
+            </span>
+          <% end %>
+        </p>
       <% end %>
     <% end %>
   </div>

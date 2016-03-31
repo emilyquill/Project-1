@@ -17,25 +17,30 @@
         </thead>
         <tbody>
           <% @organizations.each do |organization| %>
-          <tr>
-            <td><%= link_to(organization.name, organization_path(organization.id)) %></td>
-            <td>
-              <% organization.posts.each do |p| %>
-              <% if p.end_date == nil %>
-              <p><%= p.person.title %>
-                <%= p.person.first_name %>
-                <%= p.person.last_name %>
-                <%= "(#{p.job_title})" %></p>
-              <% end %>
-              <% end %>
-            </td>
-            <td id="headteacher">
-              <input type="hidden" class="organization-id" value="<%= organization.id %>">
-              <img id="loading" src="http://www.turismoinliguria.it/images/loader.gif" alt="">
-            </td>
-          </tr>
+              <tr>
+                  <td><%= link_to(organization.name, organization_path(organization.id)) %></td>
+                  <td>
+                    <% organization.posts.each do |p| %>
+                    <% if p.end_date == nil %>
+                      <p>
+                        <%= p.person.title %>
+                        <%= p.person.first_name %>
+                        <%= p.person.last_name %>
+                        <% if p.job_title.present? %>
+                          <span class="job-title">
+                              <%= p.job_title %>
+                          </span>
+                        <% end %>
+                      </p>
+                    <% end %>
+                    <% end %>
+                  </td>
+                  <td id="headteacher">
+                    <input type="hidden" class="organization-id" value="<%= organization.id %>">
+                    <img id="loading" src="http://www.turismoinliguria.it/images/loader.gif" alt="">
+                  </td>
+              </tr>
           <% end %>
-
         </tbody>
       </table>
     </div>

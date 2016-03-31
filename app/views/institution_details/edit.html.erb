@@ -1,0 +1,34 @@
+<h2> <%= link_to(@institution_detail.organization.name, organization_path(@institution_detail.organization_id))%> </h2>
+<div class="edit">
+  <div class="panel panel-info">
+  <div class="panel-heading">Edit Details</div>
+  <div class="panel-body">
+
+<%= form_for @institution_detail, :url => "/institution_details/#{@institution_detail.organization_id}", :class=> ".form-horizontal" do |i| %>
+<fieldset class="form-group">
+  <%= i.label :institution_type, :class => "col-sm-6 control-label" %>
+  <%= i.text_field :institution_type, :class => "form-control" %>
+</fieldset>
+
+<fieldset class="form-group">
+  <%= i.label :min_age, :class => "col-sm-6 control-label" %>
+  <%= i.number_field :min_age, :class => "form-control" %>
+</fieldset>
+
+<fieldset class="form-group">
+  <%= i.label :max_age, :class => "col-sm-6 control-label" %>
+  <%= i.number_field :max_age, :class => "form-control" %>
+</fieldset>
+
+<fieldset class="form-group">
+  <%= i.label :establishment_status, :class => "col-sm-6 control-label" %>
+  <%= i.text_field :establishment_status, :class => "form-control" %>
+</fieldset>
+
+<fieldset>
+  <%= i.submit :class=> "btn btn-default" %>
+</fieldset>
+<% end %>
+</div>
+</div>
+</div>
