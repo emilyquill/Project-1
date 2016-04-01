@@ -3,7 +3,6 @@ class InstitutionDetailsController < ApplicationController
   def edit
     @institution_detail = InstitutionDetail.find_by(organization_id: params[:id])
     @back = flash[:previous_url]
-
   end
 
   def update
@@ -11,8 +10,6 @@ class InstitutionDetailsController < ApplicationController
     institution_detail.update institution_detail_params
     redirect_to organization_path(institution_detail.organization_id)
   end
-
-
 
   private
 # Whitelist
